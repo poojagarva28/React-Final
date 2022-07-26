@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setpassword] = useState("");
-  const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const errMsg = <p className={styles.err}>Enter Valid Username / Password</p>;
@@ -25,7 +24,6 @@ const Login = () => {
   const loginHandler = () => {
     if (username === password && username !== "" && password !== "") {
       setShow(false);
-      setLogin(true);
       localStorage.setItem("loginStatus", true);
       navigate("/dashboard");
     } else {
@@ -36,21 +34,23 @@ const Login = () => {
   return (
     <div className={styles.logincontainer}>
       <div>
-        <h2 className="text-center">Welcome to Dashboard, Login</h2>
-        <label>Username</label>
-        <input type="text" onChange={usernameHandler} value={username} />
-        <label>Password</label>
-        <input type="password" onChange={passwordHandler} value={password} />
-        {show && errMsg}
-        <button type="submit" className="btn" onClick={loginHandler}>
-          Login
-        </button>
+        <form>
+          <h2 className="text-center">Welcome to Dashboard, Login</h2>
+          <label>Username</label>
+          <input type="text" onChange={usernameHandler} value={username} />
+          <label>Password</label>
+          <input type="password" onChange={passwordHandler} value={password} />
+          {show && errMsg}
+          <button type="submit" className="btn" onClick={loginHandler}>
+            Login
+          </button>
 
-        <br />
-        {/* <br />
+          <br />
+          {/* <br />
         <button type="submit" className="btn">
           Forgot Your Password
         </button> */}
+        </form>
       </div>
     </div>
   );

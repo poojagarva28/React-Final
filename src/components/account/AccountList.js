@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./AccountList.module.css";
 
 const AccoundList = (props) => {
   const data = Object.keys(props.accdata);
-  const [selecteduser, setSelecteduser] = useState("Admin");
 
   // const selectHandler = (e) => {
   //   setSelecteduser(e.target.value);

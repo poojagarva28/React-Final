@@ -1,12 +1,16 @@
 .accountdatacontainer {
   background-color: #435c70;
   padding: 40px;
-  display: flex;
-  width: 60%;
 }
 .accountdatacontainer .inputcontainer {
   display: flex;
-  justify-content: space-between;
+}
+.accountdatacontainer .inputcontainer .inputfields {
+  width: 100%;
+  margin-right: 40px;
+}
+.accountdatacontainer .inputcontainer:first-child .inputfields {
+  margin-right: 80px;
 }
 .container {
   display: flex;
@@ -14,4 +18,41 @@
 .accountdatacontainer:first-child {
   margin-right: 30px;
   width: 30%;
+}
+.accountdatacontainer img {
+  width: 100%;
+  height: auto;
+}
+input {
+  width: 100%;
+}
+.accountdatacontainer:last-child {
+  width: 70%;
+}
+.btn {
+  width: 115%;
+}
+button {
+  margin-top: 28px;
+}
+.imgcontainer {
+  position: relative;
+}
+.imgcontainer .imgoverlay {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.imgcontainer .imgoverlay i {
+  color: #fff;
+  background: rgba(57, 78, 100, 0.7);
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 100%;
+}
+.imgcontainer:hover .imgoverlay {
+  display: initial;
+  cursor: pointer;
 }
