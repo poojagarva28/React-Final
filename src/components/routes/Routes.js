@@ -8,9 +8,36 @@ const appRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />}></Route>
-      <Route path="/dashboard" element={<Dashboard />}></Route>
-      <Route path="/products" element={<Products />}></Route>
-      <Route path="/account" element={<Account />}></Route>
+      <Route
+        path="/dashboard"
+        element={
+          localStorage.getItem("loginStatus") === "false" ? (
+            <Login />
+          ) : (
+            <Dashboard />
+          )
+        }
+      ></Route>
+      <Route
+        path="/products"
+        element={
+          localStorage.getItem("loginStatus") === "false" ? (
+            <Login />
+          ) : (
+            <Products />
+          )
+        }
+      ></Route>
+      <Route
+        path="/account"
+        element={
+          localStorage.getItem("loginStatus") === "false" ? (
+            <Login />
+          ) : (
+            <Account />
+          )
+        }
+      ></Route>
     </Routes>
   );
 };

@@ -1,0 +1,17 @@
+.accountdatacontainer {
+  background-color: #435c70;
+  padding: 40px;
+  display: flex;
+  width: 60%;
+}
+.accountdatacontainer .inputcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+.container {
+  display: flex;
+}
+.accountdatacontainer:first-child {
+  margin-right: 30px;
+  width: 30%;
+}

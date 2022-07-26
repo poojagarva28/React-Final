@@ -34,9 +34,11 @@ const Header = () => {
         </ul>
       </nav>
       <div className={styles.logout}>
-        <Link to="/">
-          Admin, <b>Logout</b>
-        </Link>
+        {localStorage.getItem("loginStatus") === "true" && (
+          <Link to="/">
+            Admin, <b>Logout</b>
+          </Link>
+        )}
       </div>
     </header>
   );
