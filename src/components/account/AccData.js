@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./AccData.module.css";
 
 const AccData = (props) => {
+  const [accname, setAccname] = useState("");
+  const [accpwd, setAccpwd] = useState("");
+  const [acccpwd, setAcccpwd] = useState("");
+  const [accemail, setAccemail] = useState("");
+  const [accphone, setAccPhone] = useState("");
+  const [obj, setObj] = useState({});
+  const [update, isUpdate] = useState(false);
+
   let localData = JSON.parse(localStorage.getItem("accountsPage"));
   let selectedDatatoShow = localData[`${props.activeUser}`];
+
+  const updateProfileHandler = () => {
+    setObj({
+      email:
+        accemail === "" ? localData[`${props.activeUser}`].email : accemail,
+      name: accname === "" ? localData[`${props.activeUser}`].name : accname,
+      password:
+        accpwd === "" ? localData[`${props.activeUser}`].password : accpwd,
+      phone:
+        accphone === "" ? localData[`${props.activeUser}`].phone : accphone,
+    });
+    isUpdate(true);
+  };
+
+  useEffect(() => {
+    if (update) {
+      console.log(obj);
+    }
+  }, [obj, update]);
+
   return (
     <div className={styles.container}>
       <div className={styles.accountdatacontainer}>
@@ -22,18 +50,22 @@ const AccData = (props) => {
             <i className="fa fa-trash-o"></i>
           </div>
         </div>
+        <button className="btn">Upload New Photo</button>
       </div>
       <div className={styles.accountdatacontainer}>
         <div className={styles.right}>
           <h2>Account Settings</h2>
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className={styles.inputcontainer}>
               <div className={styles.inputfields}>
                 <label>Account Name</label>
                 <input
                   type="text"
+                  onChange={(e) => setAccname(e.target.value)}
                   value={
-                    selectedDatatoShow !== undefined
+                    accname.length > 0
+                      ? accname
+                      : selectedDatatoShow !== undefined
                       ? selectedDatatoShow.name
                       : ""
                   }
@@ -41,8 +73,11 @@ const AccData = (props) => {
                 <label>Password</label>
                 <input
                   type="password"
+                  onChange={(e) => setAccpwd(e.target.value)}
                   value={
-                    selectedDatatoShow !== undefined
+                    accpwd.length > 0
+                      ? accpwd
+                      : selectedDatatoShow !== undefined
                       ? selectedDatatoShow.password
                       : ""
                   }
@@ -50,8 +85,11 @@ const AccData = (props) => {
                 <label>Phone</label>
                 <input
                   type="tel"
+                  onChange={(e) => setAccPhone(e.target.value)}
                   value={
-                    selectedDatatoShow !== undefined
+                    accphone.length > 0
+                      ? accphone
+                      : selectedDatatoShow !== undefined
                       ? selectedDatatoShow.phone
                       : ""
                   }
@@ -61,8 +99,11 @@ const AccData = (props) => {
                 <label>Account Email</label>
                 <input
                   type="email"
+                  onChange={(e) => setAccemail(e.target.value)}
                   value={
-                    selectedDatatoShow !== undefined
+                    accemail.length > 0
+                      ? accemail
+                      : selectedDatatoShow !== undefined
                       ? selectedDatatoShow.email
                       : ""
                   }
@@ -70,14 +111,19 @@ const AccData = (props) => {
                 <label>Re-enter Password</label>
                 <input
                   type="password"
+                  onChange={(e) => setAcccpwd(e.target.value)}
                   value={
-                    selectedDatatoShow !== undefined
+                    acccpwd.length > 0
+                      ? accpwd
+                      : selectedDatatoShow !== undefined
                       ? selectedDatatoShow.password
                       : ""
                   }
                 />
                 <div className={styles.btn}>
-                  <button className="btn">Update Profile</button>
+                  <button className="btn" onClick={updateProfileHandler}>
+                    Update Profile
+                  </button>
                 </div>
               </div>
             </div>
