@@ -14,8 +14,6 @@ const OrdersList = () => {
     (key, index) => dashboardorders[key]
   );
 
-  console.log(orders);
-
   return (
     <div className={styles.container}>
       <h2>Orders List</h2>

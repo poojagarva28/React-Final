@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import OrdersList from "./OrdersList";
+import NotificationList from "./NotificationList";
+import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
   useEffect(() => {
@@ -30,6 +32,10 @@ const Dashboard = () => {
 
   return (
     <div>
+      <div className={styles.flexdiv}>
+        <div></div>
+        <NotificationList />
+      </div>
       <OrdersList />
     </div>
   );
