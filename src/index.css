@@ -77,3 +77,28 @@ select:focus {
   outline: none;
   box-shadow: none;
 }
+
+table {
+  width: 100%;
+  text-align: left;
+  background-color: #50697f;
+  color: #fff;
+  font-size: 85%;
+  margin-bottom: 0;
+  border-collapse: collapse;
+}
+table th,
+table td {
+  padding: 15px 25px;
+  border-top: 1px solid #415a70;
+}
+table td strong {
+  font-weight: 500;
+}
+table th {
+  border: none !important;
+}
+thead {
+  background-color: #486177;
+  text-transform: uppercase;
+}

@@ -1,7 +1,7 @@
 .container {
   background-color: #435c70;
   padding: 40px;
-  width: 50%;
+  margin-right: 0px !important;
   overflow-y: scroll;
   height: 400px;
   margin-bottom: 40px;

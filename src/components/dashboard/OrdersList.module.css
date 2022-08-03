@@ -10,30 +10,6 @@
   overflow-y: scroll;
 }
 
-.container table {
-  width: 100%;
-  text-align: left;
-  background-color: #50697f;
-  color: #fff;
-  font-size: 85%;
-  margin-bottom: 0;
-  border-collapse: collapse;
-}
-.container table th,
-.container table td {
-  padding: 15px 25px;
-  border-top: 1px solid #415a70;
-}
-.container table td strong {
-  font-weight: 500;
-}
-.contaienr table th {
-  border: none !important;
-}
-thead {
-  background-color: #486177;
-  text-transform: uppercase;
-}
 .statustd {
   position: relative;
   left: 15px;

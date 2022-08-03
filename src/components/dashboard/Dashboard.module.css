@@ -2,3 +2,9 @@
   margin-bottom: 50px;
   display: flex;
 }
+.flexdiv div:first-child {
+  margin-right: 40px;
+}
+.flexdiv > div {
+  width: 50%;
+}

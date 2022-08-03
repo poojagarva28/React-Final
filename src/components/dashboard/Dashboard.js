@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import OrdersList from "./OrdersList";
 import NotificationList from "./NotificationList";
 import styles from "./Dashboard.module.css";
+import PieChart from "./Charts/PieChart";
 
 const Dashboard = () => {
   useEffect(() => {
@@ -23,6 +24,7 @@ const Dashboard = () => {
           "productsPage",
           JSON.stringify(response.data.productsPage)
         );
+        localStorage.setItem("loginStatus", true);
       } catch (err) {
         console.log(err);
       }
@@ -30,11 +32,38 @@ const Dashboard = () => {
     getData();
   }, []);
 
+  let localPerformance = JSON.parse(localStorage.getItem("dashboardPage"))[
+    "storage"
+  ];
+  console.log("local storage data:", localPerformance);
+  const [userData, setUserData] = useState({
+    labels: [
+      `Available (${localPerformance.available}GB)`,
+      `System (${localPerformance.system}GB)`,
+      `Used (${localPerformance.used}GB)`,
+    ],
+
+    datasets: [
+      {
+        data: [
+          localPerformance.available,
+          localPerformance.system,
+          localPerformance.used,
+        ],
+        backgroundColor: ["#f7604c", "#a8d582", "#4ed6b8"],
+        fontColor: "#fff",
+      },
+    ],
+  });
   return (
     <div>
       <div className={styles.flexdiv}>
-        <div></div>
-        <NotificationList />
+        <div>
+          <PieChart chartData={userData} />
+        </div>
+        <div>
+          <NotificationList />
+        </div>
       </div>
       <OrdersList />
     </div>

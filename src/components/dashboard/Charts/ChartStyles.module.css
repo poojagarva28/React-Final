@@ -1,0 +1,10 @@
+.chartcontainer {
+  background-color: #435c70;
+  padding: 40px;
+  height: 400px;
+}
+canvas {
+  width: 350px !important;
+  height: 350px !important;
+  margin: 0 auto;
+}
