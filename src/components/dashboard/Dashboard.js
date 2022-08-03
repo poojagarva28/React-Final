@@ -4,6 +4,8 @@ import OrdersList from "./OrdersList";
 import NotificationList from "./NotificationList";
 import styles from "./Dashboard.module.css";
 import PieChart from "./Charts/PieChart";
+import LineChart from "./Charts/LineChart";
+import HorizontalChart from "./Charts/HorizontalChart";
 
 const Dashboard = () => {
   useEffect(() => {
@@ -35,7 +37,6 @@ const Dashboard = () => {
   let localPerformance = JSON.parse(localStorage.getItem("dashboardPage"))[
     "storage"
   ];
-  console.log("local storage data:", localPerformance);
   const [userData, setUserData] = useState({
     labels: [
       `Available (${localPerformance.available}GB)`,
@@ -57,6 +58,15 @@ const Dashboard = () => {
   });
   return (
     <div>
+      <div className={styles.flexdiv}>
+        <div>
+          <LineChart />
+        </div>
+        <div>
+          <HorizontalChart />
+        </div>
+      </div>
+
       <div className={styles.flexdiv}>
         <div>
           <PieChart chartData={userData} />

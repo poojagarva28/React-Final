@@ -14,8 +14,6 @@ const NotificationList = () => {
     (key, index) => notifications[key]
   );
 
-  console.log(notificationsarr);
-
   return (
     <div className={styles.container}>
       <h2>NotificationList</h2>
