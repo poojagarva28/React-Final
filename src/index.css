@@ -102,3 +102,26 @@ thead {
   background-color: #486177;
   text-transform: uppercase;
 }
+
+/* input[type="checkbox"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #394e64;
+  background-position: center;
+  border-radius: 100%;
+  box-sizing: border-box;
+  position: relative;
+  box-sizing: content-box;
+  width: 0.1px;
+  height: 0.1px;
+  transition: all 0.1s linear;
+}
+input[type="checkbox"]:checked {
+  background: url(https://templatemo.com/templates/templatemo_524_product_admin/img/check-mark.png)
+    #394e64 center no-repeat;
+}
+input[type="checkbox"]:focus {
+  outline: 0 none;
+  box-shadow: none;
+} */

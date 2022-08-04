@@ -23,9 +23,9 @@
   width: 100%;
   height: auto;
 }
-input {
+/* input {
   width: 100%;
-}
+} */
 .accountdatacontainer:last-child {
   width: 70%;
 }

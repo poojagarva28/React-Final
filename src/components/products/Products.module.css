@@ -1,4 +1,20 @@
 .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+i {
+  background-color: rgba(255, 255, 255, 0.216);
+  padding: 10px;
+  border-radius: 10px;
+}
+i:hover {
+  cursor: pointer;
+}
+.container > div {
+  background-color: #435c70;
+  padding: 40px;
+}
+.tablebody {
+  height: 500px;
+  overflow-y: scroll;
 }

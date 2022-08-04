@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import OrdersList from "./OrdersList";
 import NotificationList from "./NotificationList";
 import styles from "./Dashboard.module.css";
@@ -8,32 +7,6 @@ import LineChart from "./Charts/LineChart";
 import HorizontalChart from "./Charts/HorizontalChart";
 
 const Dashboard = () => {
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          "https://reactmusicplayer-ab9e4.firebaseio.com/project-data.json"
-        );
-        localStorage.setItem(
-          "accountsPage",
-          JSON.stringify(response.data.accountsPage)
-        );
-        localStorage.setItem(
-          "dashboardPage",
-          JSON.stringify(response.data.dasbhoardPage)
-        );
-        localStorage.setItem(
-          "productsPage",
-          JSON.stringify(response.data.productsPage)
-        );
-        localStorage.setItem("loginStatus", true);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getData();
-  }, []);
-
   let localPerformance = JSON.parse(localStorage.getItem("dashboardPage"))[
     "storage"
   ];

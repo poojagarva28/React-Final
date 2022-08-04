@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -21,7 +22,31 @@ const Login = () => {
 
   useEffect(() => {
     localStorage.setItem("loginStatus", false);
-  });
+
+    const getData = async () => {
+      try {
+        const response = await axios.get(
+          "https://reactmusicplayer-ab9e4.firebaseio.com/project-data.json"
+        );
+        localStorage.setItem(
+          "accountsPage",
+          JSON.stringify(response.data.accountsPage)
+        );
+        localStorage.setItem(
+          "dashboardPage",
+          JSON.stringify(response.data.dasbhoardPage)
+        );
+        localStorage.setItem(
+          "productsPage",
+          JSON.stringify(response.data.productsPage)
+        );
+        localStorage.setItem("loginStatus", true);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getData();
+  }, []);
 
   const loginHandler = () => {
     if (username === password && username !== "" && password !== "") {

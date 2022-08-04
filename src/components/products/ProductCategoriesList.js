@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Products.module.css";
+import style from "./Modal.module.css";
 
 const ProductCategoriesList = () => {
   const [productcategories, setProductCategories] = useState([]);
-  let obj = JSON.parse(localStorage.getItem("productsPage"));
+  const [showModal, setShowModal] = useState(false);
+  const [newCategory, setNewCategory] = useState("");
 
   const deleteHandler = (e) => {
+    let obj = JSON.parse(localStorage.getItem("productsPage"));
     let categoriesData = JSON.parse(localStorage.getItem("productsPage"))[
       "categories"
     ];
@@ -15,6 +18,10 @@ const ProductCategoriesList = () => {
       categories: categoriesData,
     };
     localStorage.setItem("productsPage", JSON.stringify(obj));
+
+    setProductCategories(
+      JSON.parse(localStorage.getItem("productsPage"))["categories"]
+    );
   };
   useEffect(() => {
     console.log("useeffect called ");
@@ -23,25 +30,73 @@ const ProductCategoriesList = () => {
     );
   }, []);
 
+  const showModalHandler = () => {
+    setShowModal(true);
+  };
+
+  const newCategoryHandler = (e) => {
+    setNewCategory(e.target.value);
+  };
+
+  const addCategoryHandler = () => {
+    productcategories.push(newCategory);
+    console.log(productcategories);
+    let obj = JSON.parse(localStorage.getItem("productsPage"));
+    obj = {
+      ...obj,
+      categories: productcategories,
+    };
+    localStorage.setItem("productsPage", JSON.stringify(obj));
+    setProductCategories(
+      JSON.parse(localStorage.getItem("productsPage"))["categories"]
+    );
+    setShowModal(false);
+  };
+
   return (
     <div className={styles.catcontainer}>
       <h2>Product Categories</h2>
-      <table>
-        <tbody>
-          {productcategories.map((item, i) => (
-            <tr key={i}>
-              <td>{item}</td>
-              <td>
-                <i
-                  className="fa fa-trash-o"
-                  id={item}
-                  onClick={deleteHandler}
-                ></i>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {showModal && (
+        <div className={style.modal}>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <label htmlFor="productcat">Category Name</label>
+            <input type="text" id="productcat" onChange={newCategoryHandler} />
+            <button className="btn" onClick={addCategoryHandler}>
+              Add Category
+            </button>
+            <button className="btn" onClick={() => setShowModal(false)}>
+              Cancel
+            </button>
+          </form>
+        </div>
+      )}
+
+      {!showModal && (
+        <>
+          <div className={styles.tablebody}>
+            <table>
+              <tbody>
+                {productcategories.map((item, i) => (
+                  <tr key={i}>
+                    <td>{item}</td>
+                    <td>
+                      <i
+                        className="fa fa-trash-o"
+                        id={item}
+                        onClick={deleteHandler}
+                      ></i>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <button className="btn" onClick={showModalHandler}>
+            Add New Category
+          </button>
+        </>
+      )}
     </div>
   );
 };
