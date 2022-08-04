@@ -3,12 +3,14 @@ import styles from "./Products.module.css";
 
 const ProductsList = () => {
   const [productlist, setProductlist] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     setProductlist(
       JSON.parse(localStorage.getItem("productsPage"))["products"]
     );
-  }, []);
+  }, [selected]);
 
   const deleteHandler = (e) => {
     console.log(e.target.id);
@@ -21,6 +23,36 @@ const ProductsList = () => {
     obj = {
       ...obj,
       products: productsAfterDelete,
+    };
+    localStorage.setItem("productsPage", JSON.stringify(obj));
+
+    setProductlist(
+      JSON.parse(localStorage.getItem("productsPage"))["products"]
+    );
+  };
+
+  const checkboxHandler = (e) => {
+    if (e.target.checked) {
+      setChecked(true);
+      setSelected([...selected, e.target.id]);
+    }
+    if (!e.target.checked) {
+      setChecked(false);
+      selected.splice(selected.indexOf(e.target.id), 1);
+      setSelected(selected);
+    }
+  };
+
+  const selectedDeleteHandler = () => {
+    let checkboxAfterDelete = productlist.filter(
+      (item) => !selected.includes(item.name)
+    );
+    // console.log(checkboxToDelete);
+
+    let obj = JSON.parse(localStorage.getItem("productsPage"));
+    obj = {
+      ...obj,
+      products: checkboxAfterDelete,
     };
     localStorage.setItem("productsPage", JSON.stringify(obj));
 
@@ -45,7 +77,12 @@ const ProductsList = () => {
             {productlist.map((item, i) => (
               <tr key={i}>
                 <td id={i}>
-                  <input type="checkbox"></input>
+                  <input
+                    type="checkbox"
+                    id={item.name}
+                    value={checked}
+                    onChange={checkboxHandler}
+                  ></input>
                 </td>
                 <td>{item.name}</td>
                 <td>{item.unitSold}</td>
@@ -64,7 +101,9 @@ const ProductsList = () => {
         </table>
       </div>
       <button className="btn">Add New Product</button>
-      <button className="btn">Delete Selected Products</button>
+      <button className="btn" onClick={selectedDeleteHandler}>
+        Delete Selected Products
+      </button>
     </div>
   );
 };
