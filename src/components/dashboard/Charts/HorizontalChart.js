@@ -12,10 +12,15 @@ class HorizontalChart extends Component {
           bar: {
             borderRadius: 4,
             horizontal: true,
+            barHeight: "40%",
           },
         },
         chart: {
           id: "apexchart-example",
+          toolbar: {
+            show: false,
+          },
+          foreColor: "#fff",
         },
         dataLabels: {
           enabled: false,
@@ -26,15 +31,7 @@ class HorizontalChart extends Component {
           ),
         },
         fill: {
-          colors: [
-            "aqua",
-            "blue",
-            "green",
-            "orange",
-            "purple",
-            "red",
-            "yellow",
-          ],
+          colors: ["#ffffff", "#E91E63", "#9C27B0"],
         },
       },
       series: [

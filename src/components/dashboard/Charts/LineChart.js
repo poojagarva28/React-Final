@@ -10,6 +10,10 @@ class LineChart extends Component {
       options: {
         chart: {
           id: "apexchart-example",
+          toolbar: {
+            show: false,
+          },
+          foreColor: "#fff",
         },
         xaxis: {
           categories: JSON.parse(localStorage.getItem("dashboardPage"))

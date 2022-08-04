@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Products.module.css";
 
 const ProductsList = () => {
   const [productlist, setProductlist] = useState([]);
@@ -14,10 +13,12 @@ const ProductsList = () => {
     <div>
       <table>
         <thead>
-          <th colspan="2">Product Name</th>
-          <th>Unit Sold</th>
-          <th>In Stock</th>
-          <th colspan="2">Expire Date</th>
+          <tr>
+            <th colSpan="2">Product Name</th>
+            <th>Unit Sold</th>
+            <th>In Stock</th>
+            <th colSpan="2">Expire Date</th>
+          </tr>
         </thead>
         <tbody>
           {productlist.map((item, i) => (

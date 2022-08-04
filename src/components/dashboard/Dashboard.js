@@ -12,7 +12,7 @@ const Dashboard = () => {
     const getData = async () => {
       try {
         const response = await axios.get(
-          "https://reactmusicplayer-ab9e4.firebaseio.com/project-data.json "
+          "https://reactmusicplayer-ab9e4.firebaseio.com/project-data.json"
         );
         localStorage.setItem(
           "accountsPage",
@@ -51,6 +51,7 @@ const Dashboard = () => {
           localPerformance.system,
           localPerformance.used,
         ],
+
         backgroundColor: ["#f7604c", "#a8d582", "#4ed6b8"],
         fontColor: "#fff",
       },

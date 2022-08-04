@@ -41,7 +41,7 @@
   color: #fff;
   font-size: 15px;
 }
-.header ul li.active {
+.active {
   background-color: #f5a623;
 }
 .header ul li.active:hover a,

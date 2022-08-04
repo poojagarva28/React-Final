@@ -11,14 +11,16 @@ const Login = () => {
 
   const usernameHandler = (e) => {
     setUsername(e.target.value);
+    setShow(false);
   };
 
   const passwordHandler = (e) => {
     setpassword(e.target.value);
+    setShow(false);
   };
 
   useEffect(() => {
-    localStorage.setItem("loginStatus", true);
+    localStorage.setItem("loginStatus", false);
   });
 
   const loginHandler = () => {
@@ -34,7 +36,7 @@ const Login = () => {
   return (
     <div className={styles.logincontainer}>
       <div>
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <h2 className="text-center">Welcome to Dashboard, Login</h2>
           <label>Username</label>
           <input type="text" onChange={usernameHandler} value={username} />
