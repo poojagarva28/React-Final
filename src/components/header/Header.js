@@ -12,7 +12,7 @@ const Header = () => {
 
   //Javascript split method to get the name of the path in array
   const splitLocation = pathname.split("/");
-  console.log(splitLocation);
+  // console.log(splitLocation);
 
   return (
     <header className={styles.header}>

@@ -9,9 +9,7 @@ const ProductCategoriesList = () => {
 
   const deleteHandler = (e) => {
     let obj = JSON.parse(localStorage.getItem("productsPage"));
-    let categoriesData = JSON.parse(localStorage.getItem("productsPage"))[
-      "categories"
-    ];
+    let categoriesData = obj["categories"];
     categoriesData.splice(categoriesData.indexOf(e.target.id), 1);
     obj = {
       ...obj,
@@ -24,7 +22,6 @@ const ProductCategoriesList = () => {
     );
   };
   useEffect(() => {
-    console.log("useeffect called ");
     setProductCategories(
       JSON.parse(localStorage.getItem("productsPage"))["categories"]
     );

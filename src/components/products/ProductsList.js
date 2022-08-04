@@ -10,6 +10,25 @@ const ProductsList = () => {
     );
   }, []);
 
+  const deleteHandler = (e) => {
+    console.log(e.target.id);
+    let obj = JSON.parse(localStorage.getItem("productsPage"));
+    let productsData = obj["products"];
+
+    let productsAfterDelete = productsData.filter(
+      (item) => item.name !== e.target.id
+    );
+    obj = {
+      ...obj,
+      products: productsAfterDelete,
+    };
+    localStorage.setItem("productsPage", JSON.stringify(obj));
+
+    setProductlist(
+      JSON.parse(localStorage.getItem("productsPage"))["products"]
+    );
+  };
+
   return (
     <div>
       <div className={styles.tablebody}>
@@ -33,7 +52,11 @@ const ProductsList = () => {
                 <td>{item.stock}</td>
                 <td>{item.expireDate}</td>
                 <td>
-                  <i className="fa fa-trash-o"></i>
+                  <i
+                    className="fa fa-trash-o"
+                    id={item.name}
+                    onClick={deleteHandler}
+                  ></i>
                 </td>
               </tr>
             ))}
