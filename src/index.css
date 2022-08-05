@@ -52,7 +52,8 @@ button {
   border: 2px solid #f5a623;
 }
 input,
-select {
+select,
+textarea {
   display: block;
   width: -webkit-fill-available;
   font-size: 1rem;
