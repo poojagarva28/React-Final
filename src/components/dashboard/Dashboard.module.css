@@ -8,3 +8,13 @@
 .flexdiv > div {
   width: 50%;
 }
+
+@media (max-width: 767px) {
+  .flexdiv {
+    display: block;
+  }
+  .flexdiv > div {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}

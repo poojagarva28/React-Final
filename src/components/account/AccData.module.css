@@ -56,3 +56,23 @@ button {
   display: initial;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .container {
+    display: block;
+  }
+  .accountdatacontainer:first-child {
+    margin: 0;
+    width: 81%;
+    margin-bottom: 30px;
+  }
+  .accountdatacontainer:last-child {
+    width: 81%;
+  }
+  .accountdatacontainer .inputcontainer {
+    display: block;
+  }
+  .btn {
+    width: 100%;
+  }
+}

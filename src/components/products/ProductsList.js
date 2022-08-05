@@ -43,8 +43,7 @@ const ProductsList = () => {
     if (e.target.checked) {
       setChecked(true);
       setSelected([...selected, e.target.id]);
-    }
-    if (!e.target.checked) {
+    } else {
       setChecked(false);
       selected.splice(selected.indexOf(e.target.id), 1);
       setSelected(selected);
@@ -52,10 +51,11 @@ const ProductsList = () => {
   };
 
   const selectedDeleteHandler = () => {
+    setChecked(false);
     let checkboxAfterDelete = productlist.filter(
       (item) => !selected.includes(item.name)
     );
-    // console.log(checkboxToDelete);
+    // console.log(checkboxAfterDelete);
 
     let obj = JSON.parse(localStorage.getItem("productsPage"));
     obj = {
@@ -67,6 +67,11 @@ const ProductsList = () => {
     setProductlist(
       JSON.parse(localStorage.getItem("productsPage"))["products"]
     );
+
+    let selectedall = document.querySelectorAll("input[type=checkbox]:checked");
+    for (let i = 0; i < selectedall.length; i++) {
+      selectedall[i].checked = false;
+    }
   };
 
   const addNewProduct = () => {
@@ -107,6 +112,10 @@ const ProductsList = () => {
     setModal(false);
   };
 
+  const selectDeleteHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       {!modal && (
@@ -116,10 +125,12 @@ const ProductsList = () => {
             <table>
               <thead>
                 <tr>
-                  <th colSpan="2">Product Name</th>
+                  <th></th>
+                  <th>Product Name</th>
                   <th>Unit Sold</th>
                   <th>In Stock</th>
-                  <th colSpan="2">Expire Date</th>
+                  <th>Expire Date</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -129,7 +140,7 @@ const ProductsList = () => {
                       <input
                         type="checkbox"
                         id={item.name}
-                        value={checked}
+                        // value={checked}
                         onChange={checkboxHandler}
                       ></input>
                     </td>
@@ -152,7 +163,7 @@ const ProductsList = () => {
           <button className="btn" onClick={addNewProduct}>
             Add New Product
           </button>
-          <button className="btn" onClick={selectedDeleteHandler}>
+          <button className="btn" onClick={selectedDeleteHandler} type="reset">
             Delete Selected Products
           </button>
         </div>
@@ -161,7 +172,7 @@ const ProductsList = () => {
         <div className={styles.addproductmodal}>
           <h2>Add Product</h2>
           <label htmlFor="Category">Category</label>
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={selectDeleteHandler}>
             <input
               type="text"
               onChange={(e) => setCategory(e.target.value)}

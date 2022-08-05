@@ -9,3 +9,8 @@ canvas,
   height: 350px !important;
   margin: 0 auto;
 }
+@media (max-width: 767px) {
+  .chartcontainer {
+    height: fit-content;
+  }
+}

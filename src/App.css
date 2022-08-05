@@ -21,3 +21,9 @@
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #3a4f63;
 }
+
+@media (max-width: 767px) {
+  .padding-class {
+    padding: 50px 30px;
+  }
+}

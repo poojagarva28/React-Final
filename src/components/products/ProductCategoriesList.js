@@ -36,6 +36,10 @@ const ProductCategoriesList = () => {
   };
 
   const addCategoryHandler = () => {
+    if (newCategory === "") {
+      alert("Please Enter a New Category");
+      return;
+    }
     productcategories.push(newCategory);
     console.log(productcategories);
     let obj = JSON.parse(localStorage.getItem("productsPage"));
@@ -48,6 +52,7 @@ const ProductCategoriesList = () => {
       JSON.parse(localStorage.getItem("productsPage"))["categories"]
     );
     setShowModal(false);
+    setNewCategory("");
   };
 
   return (
@@ -57,7 +62,12 @@ const ProductCategoriesList = () => {
         <div className={style.modal}>
           <form onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="productcat">Category Name</label>
-            <input type="text" id="productcat" onChange={newCategoryHandler} />
+            <input
+              type="text"
+              value={newCategory}
+              id="productcat"
+              onChange={newCategoryHandler}
+            />
             <button className="btn" onClick={addCategoryHandler}>
               Add Category
             </button>

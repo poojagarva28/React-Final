@@ -15,9 +15,25 @@ i:hover {
   padding: 40px;
 }
 .tablebody {
-  height: 500px;
+  height: 450px;
   overflow-y: scroll;
+  width: 100% !important;
 }
+
 .addproductmodal {
   width: 57%;
+}
+.container div:first-child {
+  width: 57%;
+}
+
+@media (max-width: 767px) {
+  .container {
+    display: block;
+    width: 100%;
+  }
+  .container div:first-child {
+    width: 81%;
+    margin-bottom: 30px;
+  }
 }
