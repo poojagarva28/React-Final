@@ -4,7 +4,6 @@ import styles from "./Products.module.css";
 const ProductsList = () => {
   const [productlist, setProductlist] = useState([]);
   const [selected, setSelected] = useState([]);
-  const [checked, setChecked] = useState(false);
   const [modal, setModal] = useState(false);
 
   const [category, setCategory] = useState("");
@@ -41,17 +40,14 @@ const ProductsList = () => {
 
   const checkboxHandler = (e) => {
     if (e.target.checked) {
-      setChecked(true);
       setSelected([...selected, e.target.id]);
     } else {
-      setChecked(false);
       selected.splice(selected.indexOf(e.target.id), 1);
       setSelected(selected);
     }
   };
 
   const selectedDeleteHandler = () => {
-    setChecked(false);
     let checkboxAfterDelete = productlist.filter(
       (item) => !selected.includes(item.name)
     );

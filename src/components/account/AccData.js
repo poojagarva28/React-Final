@@ -10,9 +10,10 @@ const AccData = (props) => {
   const [obj, setObj] = useState({});
   const [update, isUpdate] = useState(false);
 
+  let activeUser = props;
+
   let localData = JSON.parse(localStorage.getItem("accountsPage"));
   let selectedDatatoShow = localData[`${props.activeUser}`];
-
   const updateProfileHandler = () => {
     setObj({
       email:
@@ -29,7 +30,23 @@ const AccData = (props) => {
   useEffect(() => {
     if (update) {
       console.log(obj);
+      let obj1 = JSON.parse(localStorage.getItem("accountsPage"));
+      console.log("before addding product:", obj1);
+      console.log();
+      obj1 = {
+        ...obj1,
+        [`${JSON.stringify(activeUser).slice(
+          15,
+          JSON.stringify(activeUser).length - 2
+        )}`]: obj,
+      };
+      console.log(obj1);
+      localStorage.setItem("accountsPage", JSON.stringify(obj1));
     }
+    setAccname("");
+    setAccpwd("");
+    setAccemail("");
+    setAccPhone("");
   }, [obj, update]);
 
   return (
