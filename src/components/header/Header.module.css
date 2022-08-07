@@ -48,9 +48,40 @@
 .header ul li.active:hover i {
   color: #fff;
 }
-
+.headermob {
+  display: none;
+}
 @media (max-width: 767px) {
   .header {
     padding: 0px;
+    display: none;
+  }
+  .headermob {
+    display: initial;
+  }
+  .headermob header {
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #567086;
+  }
+  .headermob nav ul {
+    list-style-type: none;
+    margin: 0px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+  }
+  .headermob nav {
+    background-color: #567086;
+  }
+  .headermob nav ul a {
+    color: #fff;
+  }
+  .active {
+    background-color: initial;
+  }
+  .active a {
+    color: #f5a623 !important;
   }
 }

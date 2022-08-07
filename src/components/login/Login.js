@@ -21,8 +21,6 @@ const Login = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("loginStatus", false);
-
     const getData = async () => {
       try {
         const response = await axios.get(
@@ -40,7 +38,7 @@ const Login = () => {
           "productsPage",
           JSON.stringify(response.data.productsPage)
         );
-        localStorage.setItem("loginStatus", true);
+        localStorage.setItem("loginStatus", 0);
       } catch (err) {
         console.log(err);
       }
@@ -51,7 +49,7 @@ const Login = () => {
   const loginHandler = () => {
     if (username === password && username !== "" && password !== "") {
       setShow(false);
-      localStorage.setItem("loginStatus", true);
+      localStorage.setItem("loginStatus", 1);
       navigate("/dashboard");
     } else {
       setShow(true);

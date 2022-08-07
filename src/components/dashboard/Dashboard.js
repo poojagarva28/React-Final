@@ -30,6 +30,7 @@ const Dashboard = () => {
       },
     ],
   });
+
   return (
     <div>
       <div className={styles.flexdiv}>
