@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/React-Final/static/css/main.cf4f30d3.css",
-    "main.js": "/React-Final/static/js/main.3f60969e.js",
+    "main.js": "/React-Final/static/js/main.a5734a6d.js",
     "static/js/787.6ba6b6a5.chunk.js": "/React-Final/static/js/787.6ba6b6a5.chunk.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/React-Final/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/React-Final/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
@@ -10,11 +10,11 @@
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/React-Final/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/React-Final/index.html",
     "main.cf4f30d3.css.map": "/React-Final/static/css/main.cf4f30d3.css.map",
-    "main.3f60969e.js.map": "/React-Final/static/js/main.3f60969e.js.map",
+    "main.a5734a6d.js.map": "/React-Final/static/js/main.a5734a6d.js.map",
     "787.6ba6b6a5.chunk.js.map": "/React-Final/static/js/787.6ba6b6a5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cf4f30d3.css",
-    "static/js/main.3f60969e.js"
+    "static/js/main.a5734a6d.js"
   ]
 }
