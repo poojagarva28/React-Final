@@ -38,7 +38,6 @@ const Login = () => {
           "productsPage",
           JSON.stringify(response.data.productsPage)
         );
-        localStorage.setItem("loginStatus", 0);
       } catch (err) {
         console.log(err);
       }
@@ -49,8 +48,9 @@ const Login = () => {
   const loginHandler = () => {
     if (username === password && username !== "" && password !== "") {
       setShow(false);
-      localStorage.setItem("loginStatus", 1);
+      localStorage.setItem("loginStatus", true);
       navigate("/dashboard");
+      console.log("login");
     } else {
       setShow(true);
     }

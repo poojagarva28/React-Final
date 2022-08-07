@@ -28,7 +28,13 @@ const Header = () => {
                 splitLocation[1] === "dashboard" ? `${styles.active}` : ""
               }
             >
-              <Link to="/dashboard">
+              <Link
+                to={
+                  JSON.parse(localStorage.getItem("loginStatus")) === true
+                    ? "/dashboard"
+                    : "/"
+                }
+              >
                 <i className="fa fa-tachometer"></i>
                 <br />
                 <span>Dashboard</span>
@@ -39,7 +45,13 @@ const Header = () => {
                 splitLocation[1] === "products" ? `${styles.active}` : ""
               }
             >
-              <Link to="/products">
+              <Link
+                to={
+                  JSON.parse(localStorage.getItem("loginStatus")) === true
+                    ? "/products"
+                    : "/"
+                }
+              >
                 <i className="fa fa-shopping-cart"></i>
                 <br />
                 <span>Products</span>
@@ -50,7 +62,13 @@ const Header = () => {
                 splitLocation[1] === "account" ? `${styles.active}` : ""
               }
             >
-              <Link to="/account">
+              <Link
+                to={
+                  JSON.parse(localStorage.getItem("loginStatus")) === true
+                    ? "/account"
+                    : "/"
+                }
+              >
                 <i className="fa fa-user-o"></i>
                 <br />
                 <span>Account</span>
@@ -59,8 +77,11 @@ const Header = () => {
           </ul>
         </nav>
         <div className={styles.logout}>
-          {localStorage.getItem("loginStatus") === "true" && (
-            <Link to="/" onClick={localStorage.setItem("loginStatus", false)}>
+          {JSON.parse(localStorage.getItem("loginStatus")) === true && (
+            <Link
+              to="/"
+              onClick={() => localStorage.setItem("loginStatus", false)}
+            >
               Admin, <b>Logout</b>
             </Link>
           )}
@@ -82,7 +103,13 @@ const Header = () => {
                     splitLocation[1] === "dashboard" ? `${styles.active}` : ""
                   }
                 >
-                  <Link to="/dashboard">
+                  <Link
+                    to={
+                      JSON.parse(localStorage.getItem("loginStatus")) === true
+                        ? "/dashboard"
+                        : "/"
+                    }
+                  >
                     <br />
                     <span>Dashboard</span>
                   </Link>
@@ -92,7 +119,13 @@ const Header = () => {
                     splitLocation[1] === "products" ? `${styles.active}` : ""
                   }
                 >
-                  <Link to="/products">
+                  <Link
+                    to={
+                      JSON.parse(localStorage.getItem("loginStatus")) === true
+                        ? "/products"
+                        : "/"
+                    }
+                  >
                     <br />
                     <span>Products</span>
                   </Link>
@@ -102,7 +135,13 @@ const Header = () => {
                     splitLocation[1] === "account" ? `${styles.active}` : ""
                   }
                 >
-                  <Link to="/account">
+                  <Link
+                    to={
+                      JSON.parse(localStorage.getItem("loginStatus")) === true
+                        ? "/account"
+                        : "/"
+                    }
+                  >
                     <br />
                     <span>Account</span>
                   </Link>
@@ -110,14 +149,9 @@ const Header = () => {
               </ul>
             </nav>
             <div className={styles.logout}>
-              {localStorage.getItem("loginStatus") === "true" && (
-                <Link
-                  to="/"
-                  onClick={localStorage.setItem("loginStatus", false)}
-                >
-                  Admin, <b>Logout</b>
-                </Link>
-              )}
+              <Link to="/">
+                Admin, <b>Logout</b>
+              </Link>
             </div>
           </>
         )}
